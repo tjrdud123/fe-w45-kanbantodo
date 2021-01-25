@@ -1,0 +1,15 @@
+$max-width: 100%;
+$bar-height: 50px;
+.header {
+  width: $max-width;
+  height: $bar-height;
+  background-color: black;
+  color: white;
+}
+.searchbar {  
+  width: $max-width;
+  height: $bar-height;
+}
+.container {
+  width: $max-width;
+}
