@@ -4,3 +4,4 @@
 - webpack/babel 설정
   - webpack-dev-server
   - sass loader, babel loader, file loader(image)
+- model, view, observer pattern 학습

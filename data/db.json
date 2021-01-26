@@ -18,9 +18,33 @@
       "id": 1,
       "columnId": 1,
       "title": "github 공부하기"
+    },
+    {
+      "id": 2,
+      "columnId": 2,
+      "title": "리액트 공부하기"
+    },
+    {
+      "id": 3,
+      "columnId": 3,
+      "title": "운동하기"
+    },
+    {
+      "id": 4,
+      "columnId": 1,
+      "title": "링피트 하기"
+    },
+    {
+      "id": 5,
+      "columnId": 1,
+      "title": "설거지 하기"
     }
   ],
   "subtask": [
-    
+    {
+      "id": 1,
+      "taskId": 1,
+      "title": "commit 공부하기"
+    }
   ]
 }
