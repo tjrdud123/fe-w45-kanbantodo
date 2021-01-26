@@ -1,0 +1,26 @@
+{
+  "column": [
+    {
+      "id": 1,
+      "title": "TODO"
+    },
+    {
+      "id": 2,
+      "title": "DOING"
+    },
+    {
+      "id": 3,
+      "title": "DONE"
+    }
+  ],
+  "task": [
+    {
+      "id": 1,
+      "columnId": 1,
+      "title": "github 공부하기"
+    }
+  ],
+  "subtask": [
+    
+  ]
+}
