@@ -5,3 +5,7 @@
   - webpack-dev-server
   - sass loader, babel loader, file loader(image)
 - model, view, observer pattern 학습
+
+**1. 26(화)**
+- model, view 나눔
+- 옵저버 패턴 적용(columnView -> columnModel, taskView -> taskModel)

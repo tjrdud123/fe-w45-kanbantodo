@@ -12,6 +12,8 @@ class SearchView extends Observable {
     el.setAttribute("class", "searchbar__input");
     return el;
   }
+
+  // controller로 옮기기
   initEventListener() {
     this.inputEl.addEventListener("input", ({target}) => {
       const word = target.innerText;
