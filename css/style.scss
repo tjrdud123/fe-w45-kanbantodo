@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Song+Myung&display=swap');
+$max-width: 100%;
+$bar-height: 50px;
+
+$column-width: 400px;
+$column-height: 700px;
+
+$color-gray: #eee;
+$color-border: #ccc;
+
+* {
+  font-family: 'Song Myung', serif;
+}
+
+.header {
+  width: $max-width;
+  height: $bar-height;
+  background-color: black;
+  color: white;
+}
+.searchbar {  
+  width: $max-width;
+  height: $bar-height;
+}
+.container {
+  width: $max-width;
+  padding: 0px 20px;
+}
+
+.column {
+  width: $column-width;
+  height: $column-height;
+  background-color: $color-gray;
+  padding: 10px;
+  border-radius: 10px;
+  .number-box {
+    width: 30px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius: 50%;
+    font-size: 22px;
+    text-align: center;
+  }
+  .column-title {
+    height: 30px;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  .task-image {
+    width: 26px;
+    height: 26px;
+  }
+  .task {
+    padding: 10px;
+    background-color: #fff;
+  }
+  .close-image {
+    width: 12px;
+    height: 12px;
+    float: right;
+    
+  }
+  .plus-image {
+    width: 12px;
+    height: 12px;
+    float: right;
+    margin-right: 10px;
+  }
+}

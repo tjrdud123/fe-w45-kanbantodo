@@ -1,1 +1,11 @@
-# fe-w45-kanbantodo
+# fe-w45-kanbantodo(nacho)
+### 4주차
+**1. 25(월)**
+- webpack/babel 설정
+  - webpack-dev-server
+  - sass loader, babel loader, file loader(image)
+- model, view, observer pattern 학습
+
+**1. 26(화)**
+- model, view 나눔
+- 옵저버 패턴 적용(columnView -> columnModel, taskView -> taskModel)
