@@ -9,3 +9,10 @@
 **1. 26(화)**
 - model, view 나눔
 - 옵저버 패턴 적용(columnView -> columnModel, taskView -> taskModel)
+
+**1. 27(수)**
+- model 구조 변경(하나의 인스턴스에서 모든 데이터 저장)
+- listView -> model 구독
+- 검색 필터링 구현
+- view의 이벤트 핸들러 함수 controller.js에 정의
+- task 추가, 삭제 구현중

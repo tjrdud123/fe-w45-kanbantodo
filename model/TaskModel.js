@@ -5,9 +5,9 @@ export class TaskModel extends Observable {
     super();
     this.tasks = [];
   }
-  addTask(...tasks) {
+  postTask(...tasks) {
     this.tasks = [...this.tasks, ...tasks];
     this.notify(this.tasks);
   }
-  removeColumn(id) {}
+  deleteTask(id) {}
 }
