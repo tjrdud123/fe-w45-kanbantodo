@@ -1,16 +1,10 @@
-import { Observer } from "../js/Observer.js";
 import closeImage from "../image/close.png";
 
-export class TaskView extends Observer {
-  constructor(observable) {
-    super(observable);
-    this.parentEl = {};
+export function getTaskHtml(tasks) {
+  let html = ``;
+  for(let key in tasks) {
+    html += `<div name="${key}" class="task border-radius-10 border-gray margin-center">${tasks[key].title}` +
+      `<img src=${closeImage} class="close-image"></div>`;
   }
-  update(state) {
-    for(let key in this.parentEl) this.parentEl[key].innerHTML = "";
-    state.forEach(task => {
-      this.parentEl[task.columnId].innerHTML += `<div class="task border-radius-10 border-gray margin-center">${task.title}
-        <img src=${closeImage} class="close-image"></div>`;
-    });
-  }
+  return html;
 }

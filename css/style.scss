@@ -1,15 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Song+Myung&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 $max-width: 100%;
 $bar-height: 50px;
 
 $column-width: 400px;
 $column-height: 700px;
 
-$color-gray: #eee;
-$color-border: #ccc;
+$color-gray: rgb(237, 239, 241);
+$color-font: rgb(61, 65, 67);
+$color-border: rgb(223,226,229);
+
+$btn-height: 40px;
 
 * {
-  font-family: 'Song Myung', serif;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: $color-font;
 }
 
 .header {
@@ -21,13 +25,14 @@ $color-border: #ccc;
 .searchbar {  
   width: $max-width;
   height: $bar-height;
+  margin-top: 10px;
 }
 .container {
   width: $max-width;
   padding: 0px 20px;
 }
 
-.column {
+.list {
   width: $column-width;
   height: $column-height;
   background-color: $color-gray;
@@ -58,6 +63,7 @@ $color-border: #ccc;
     width: 12px;
     height: 12px;
     float: right;
+    cursor: pointer;
     
   }
   .plus-image {
@@ -65,5 +71,52 @@ $color-border: #ccc;
     height: 12px;
     float: right;
     margin-right: 10px;
+    cursor: pointer;
+
   }
+}
+.new-task {
+  width: 100%;
+  margin: 20px 0px;
+  .new-task-input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .btn-box {
+    justify-content: space-between;
+    .btn-add--active {
+      width: 49%;
+      height: $btn-height;
+      cursor: pointer;
+    }
+    .btn-add--inactive {
+      width: 49%;
+      height: $btn-height;
+      background-color: rgb(146, 206, 146);
+      color: white;
+      cursor: not-allowed;
+    }
+    .btn-cancel {
+      width: 49%;
+      height: $btn-height;
+      background-color: white;
+      cursor: pointer;
+    }
+  }
+  
+}
+textarea {
+  resize : vertical;
+} 
+.input-filter {
+  width: 400px;
+  height: 90%;
+  margin-left: 30px;
+  padding-left: 10px;
+  border: 1px solid $color-border;
+}
+.new-list {
+  width: 400px;
+  height: 250px;
+  border: 1px dashed $color-border;
 }
