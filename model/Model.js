@@ -1,5 +1,5 @@
 import produce from "immer";
-import { deleteData, getData, postData } from "../js/util.js";
+import { deleteData, getData, postData, putData } from "../js/util.js";
 import { Observable } from "../js/Observable.js";
 
 export class Model extends Observable {
@@ -41,8 +41,8 @@ export class Model extends Observable {
       }
     });
 
-    console.log(this.state);
     this.notify(this.state);
+
   }
 
   add(type, info) {
@@ -68,7 +68,6 @@ export class Model extends Observable {
   }
 
   delete(type, id, listId) {
-    console.log(type, id, listId);
     let state;
     if (type === "task") {
       state = produce(this.state, draft => {
@@ -85,8 +84,17 @@ export class Model extends Observable {
     this.notify(state);
   }
 
-  modify() {
-
+  modify(type, info, from, to) {
+    let state;
+    if(type === "task") {
+      state = produce(this.state, draft => {
+        delete draft[from].tasks[info.id];
+        draft[to].tasks[info.id] = info;
+      });
+    }
+    putData("task", info);
+    this.state = state;
+    this.notify(state);
   }
 
   filter(value) {

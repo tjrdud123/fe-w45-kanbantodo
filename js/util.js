@@ -30,5 +30,12 @@ export async function postData(type, data) {
 }
 
 export async function putData(type, data) {
-
+  let url = `${URL}/${type}/${data.id}`;
+  fetch(url, {
+    method: 'PUT',
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data)
+  })
 }

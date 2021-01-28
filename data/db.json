@@ -15,42 +15,20 @@
   ],
   "task": [
     {
-      "id": 3,
-      "listId": 3,
-      "title": "운동하기"
-    },
-    {
+      "id": 1611848354274,
       "listId": "1",
-      "title": "청소기 돌리기",
-      "id": 6
+      "title": "asd"
     },
     {
-      "listId": "2",
-      "title": "사과먹기",
-      "id": 10
-    },
-    {
-      "listId": "2",
-      "title": "커피마시기",
-      "id": 1611797449157
-    },
-    {
-      "listId": "1611804000812",
-      "title": "asdasd",
-      "id": 1611804003652
-    },
-    {
+      "id": 1611848356978,
       "listId": "1",
-      "title": "우유 먹기",
-      "id": 1611820614703
+      "title": "asdqweqwe"
+    },
+    {
+      "id": 1611848359483,
+      "listId": "3",
+      "title": "fhsdfghsdfhsdfhsdfh"
     }
   ],
-  "subTask": [
-    {
-      "id": 1,
-      "listId": 1,
-      "taskId": 6,
-      "title": "commit 공부하기"
-    }
-  ]
+  "subTask": []
 }

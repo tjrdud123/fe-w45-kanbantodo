@@ -3,6 +3,7 @@ import { ListView } from "../view/ListView.js";
 
 import { onInputFilterEvent, onListEvent } from "./controller.js";
 import { Modal } from "./Modal.js";
+import { DaD } from "./DAD.js";
 
 window.addEventListener("DOMContentLoaded", main);
 
@@ -10,11 +11,11 @@ function main() {
   console.log("init page!");
   const containerEl = document.querySelector(".container");
   
-  
-
   const model = new Model();
   const listView = new ListView(model, containerEl);
-  model.initState();
+  model.initState().then(data => {
+    DaD.init(model);
+  });
 
   const inputFilterEl = document.querySelector(".input-filter");
   inputFilterEl.addEventListener("input", e => {

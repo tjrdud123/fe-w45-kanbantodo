@@ -40,6 +40,7 @@ $btn-height: 40px;
   background-color: $color-gray;
   padding: 10px;
   border-radius: 10px;
+  overflow-y: auto;
   .number-box {
     width: 30px;
     height: 30px;
@@ -145,4 +146,21 @@ textarea {
     height: 60px;
     background-color: $color-gray;
   }
+}
+
+.copied {
+  width: 300px;
+  height: 80px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 2px blue solid;
+
+}
+.expected {
+  position:static;
+  border: 2px blue solid;
+}
+.translucent {
+  opacity: 0.5;
 }
