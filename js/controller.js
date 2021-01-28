@@ -10,8 +10,8 @@ export function onInputFilterEvent({target}, model) {
   model.filter(value);
 }
 
+// 리팩토링 해야할듯 ㅠㅠ
 export function onListEvent({target}, model) {
-  console.log(target.className);
   if(target.className === "plus-image") {
     // + 버튼
     const listId = target.closest(".list").getAttribute("name");
@@ -22,5 +22,12 @@ export function onListEvent({target}, model) {
     target.closest(".new-task").classList.add("d-none");
   } else if(target.matches(".btn-add--active")) {
     // add 버튼
+    const value = target.closest(".new-task").firstElementChild.value;
+    const listId = target.closest(".list").getAttribute("name");
+    model.add("task", {listId: listId, title: value});
+  } else if(target.matches(".close-image") && target.parentNode.matches(".task")) {
+    const id = target.parentNode.getAttribute("name");
+    const listId = target.closest(".list").getAttribute("name");
+    model.delete("task", listId, id);
   }
 }

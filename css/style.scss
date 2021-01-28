@@ -87,6 +87,8 @@ $btn-height: 40px;
     .btn-add--active {
       width: 49%;
       height: $btn-height;
+      background-color: rgb(100, 173, 100);
+      color: black;
       cursor: pointer;
     }
     .btn-add--inactive {

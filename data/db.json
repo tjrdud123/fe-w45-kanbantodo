@@ -15,11 +15,6 @@
   ],
   "task": [
     {
-      "id": 1,
-      "listId": 1,
-      "title": "github 공부하기"
-    },
-    {
       "id": 2,
       "listId": 2,
       "title": "리액트 공부하기"
@@ -35,9 +30,24 @@
       "title": "링피트 하기"
     },
     {
-      "id": 5,
-      "listId": 1,
-      "title": "설거지 하기"
+      "listId": "1",
+      "title": "청소기 돌리기",
+      "id": 6
+    },
+    {
+      "listId": "1",
+      "title": "밥먹기",
+      "id": 7
+    },
+    {
+      "listId": "1",
+      "title": "우유먹기",
+      "id": 8
+    },
+    {
+      "listId": "2",
+      "title": "사과먹기",
+      "id": 10
     }
   ],
   "subTask": [

@@ -1,5 +1,5 @@
 import produce from "immer";
-import { getData } from "../js/util.js";
+import { deleteData, getData, postData } from "../js/util.js";
 import { Observable } from "../js/Observable.js";
 
 export class Model extends Observable {
@@ -28,8 +28,10 @@ export class Model extends Observable {
     });
 
     subTasks.forEach(subTask => {
-      this.state[subTask.listId].tasks[subTask.taskId].subTasks[subTask.id] = {
-        title: subTask.title
+      if(this.state[subTask.listId].tasks[subTask.taskId]) {
+        this.state[subTask.listId].tasks[subTask.taskId].subTasks[subTask.id] = {
+          title: subTask.title
+        }
       }
     });
 
@@ -37,12 +39,30 @@ export class Model extends Observable {
     this.notify(this.state);
   }
   
-  post() {
+  add(type, info) {
+    let state;
+    if(type === "task") {
+      state = produce(this.state, draft =>  {
+        draft[info.listId].tasks[new Date().getTime()] = info;
+      });
+      postData("task", info);
+      this.state = state;
+    }
 
+    this.notify(state);
   }
 
-  delete() {
-
+  delete(type, listId, id) {
+    let state;
+    if(type === "task") {
+      state = produce(this.state, draft =>  {
+        delete draft[listId].tasks[id];
+      });
+      
+    }
+    deleteData(type, id);
+    this.state = state;
+    this.notify(state);
   }
 
   modify() {
