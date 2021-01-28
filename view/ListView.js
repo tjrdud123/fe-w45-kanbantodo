@@ -30,6 +30,7 @@ export class ListView extends Observer {
   }
 
   getNewListHtml() {
-    return `<div class="new-list margin-10">Add column</div>`;
+    return `<div class="new-list margin-10"><input type="text" class="new-list-input">` +
+      `<button class="new-list-btn">+</button></div>`;
   }
 }

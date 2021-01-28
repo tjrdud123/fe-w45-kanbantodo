@@ -2,6 +2,12 @@
   view에서 발생하는 event handler 함수 정의
 */
 
+import { Modal } from "./Modal.js";
+
+// modal test
+const modal = new Modal("doubleCheck", { width: 500, height: 300, isBackgroundDarked: true});
+modal.init();
+
 export function onInputFilterEvent({target}, model) {
   const value = target.value;
   const reg = /^[가-힣a-zA-Z\s]+$/;
@@ -28,6 +34,14 @@ export function onListEvent({target}, model) {
   } else if(target.matches(".close-image") && target.parentNode.matches(".task")) {
     const id = target.parentNode.getAttribute("name");
     const listId = target.closest(".list").getAttribute("name");
-    model.delete("task", listId, id);
+    modal.doubleCheck(model.delete, "task", id, listId);
+    //model.delete("task", id, listId);
+  } else if(target.className === "new-list-btn") {
+    const value = target.previousSibling.value;
+    model.add("list", value);
+  } else if(target.parentNode.matches(".list")) {
+    const id = target.parentNode.getAttribute("name");
+    if(parseInt(id) <= 3) return; // default list
+    model.delete("list", id);
   }
 }

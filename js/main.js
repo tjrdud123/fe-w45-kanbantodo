@@ -2,6 +2,7 @@ import { Model } from "../model/Model.js";
 import { ListView } from "../view/ListView.js";
 
 import { onInputFilterEvent, onListEvent } from "./controller.js";
+import { Modal } from "./Modal.js";
 
 window.addEventListener("DOMContentLoaded", main);
 
@@ -9,6 +10,8 @@ function main() {
   console.log("init page!");
   const containerEl = document.querySelector(".container");
   
+  
+
   const model = new Model();
   const listView = new ListView(model, containerEl);
   model.initState();

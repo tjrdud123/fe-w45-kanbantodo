@@ -15,19 +15,9 @@
   ],
   "task": [
     {
-      "id": 2,
-      "listId": 2,
-      "title": "리액트 공부하기"
-    },
-    {
       "id": 3,
       "listId": 3,
       "title": "운동하기"
-    },
-    {
-      "id": 4,
-      "listId": 1,
-      "title": "링피트 하기"
     },
     {
       "listId": "1",
@@ -35,26 +25,31 @@
       "id": 6
     },
     {
-      "listId": "1",
-      "title": "밥먹기",
-      "id": 7
-    },
-    {
-      "listId": "1",
-      "title": "우유먹기",
-      "id": 8
-    },
-    {
       "listId": "2",
       "title": "사과먹기",
       "id": 10
+    },
+    {
+      "listId": "2",
+      "title": "커피마시기",
+      "id": 1611797449157
+    },
+    {
+      "listId": "1611804000812",
+      "title": "asdasd",
+      "id": 1611804003652
+    },
+    {
+      "listId": "1",
+      "title": "우유 먹기",
+      "id": 1611820614703
     }
   ],
   "subTask": [
     {
       "id": 1,
       "listId": 1,
-      "taskId": 1,
+      "taskId": 6,
       "title": "commit 공부하기"
     }
   ]
