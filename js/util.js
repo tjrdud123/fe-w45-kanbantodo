@@ -11,14 +11,31 @@ export async function getData(type, query) {
   return resData;
 }
 
-export async function deleteData(type, query) {
-
+export async function deleteData(type, id) {
+  let url = `${URL}/${type}/${id}`;
+  const res = await fetch(url, {
+    method: "DELETE"
+  });
 }
 
 export async function postData(type, data) {
-  
+  let url = `${URL}/${type}`;
+  const res = await fetch(url, {
+    method: 'post',
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data)
+  });
 }
 
 export async function putData(type, data) {
-
+  let url = `${URL}/${type}/${data.id}`;
+  fetch(url, {
+    method: 'PUT',
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data)
+  })
 }

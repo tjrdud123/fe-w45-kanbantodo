@@ -19,7 +19,7 @@ export class ListView extends Observer {
     this.parentEl.innerHTML = html;
   }
   getListHtml(list, id) {
-    let html = `<div name="${id}" class="list margin-10 border-gray">${list.title}`;
+    let html = `<div name="${id}" class="list margin-10 border-gray">${list.title} ${Object.keys(list.tasks).length}`;
     html += `<img src=${closeImage} class="close-image">`;
     html += `<img src=${plusImage} class="plus-image">`;
     html += `<div class="task-list">`;
@@ -30,6 +30,7 @@ export class ListView extends Observer {
   }
 
   getNewListHtml() {
-    return `<div class="new-list margin-10">Add column</div>`;
+    return `<div class="new-list margin-10"><input type="text" class="new-list-input">` +
+      `<button class="new-list-btn">+</button></div>`;
   }
 }

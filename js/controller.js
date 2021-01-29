@@ -2,6 +2,12 @@
   view에서 발생하는 event handler 함수 정의
 */
 
+import { Modal } from "./Modal.js";
+
+// modal test
+const modal = new Modal("doubleCheck", { width: 500, height: 300, isBackgroundDarked: true});
+modal.init();
+
 export function onInputFilterEvent({target}, model) {
   const value = target.value;
   const reg = /^[가-힣a-zA-Z\s]+$/;
@@ -10,8 +16,8 @@ export function onInputFilterEvent({target}, model) {
   model.filter(value);
 }
 
+// 리팩토링 해야할듯 ㅠㅠ
 export function onListEvent({target}, model) {
-  console.log(target.className);
   if(target.className === "plus-image") {
     // + 버튼
     const listId = target.closest(".list").getAttribute("name");
@@ -22,5 +28,20 @@ export function onListEvent({target}, model) {
     target.closest(".new-task").classList.add("d-none");
   } else if(target.matches(".btn-add--active")) {
     // add 버튼
+    const value = target.closest(".new-task").firstElementChild.value;
+    const listId = target.closest(".list").getAttribute("name");
+    model.add("task", {listId: listId, title: value});
+  } else if(target.matches(".close-image") && target.parentNode.matches(".task")) {
+    const id = target.parentNode.getAttribute("name");
+    const listId = target.closest(".list").getAttribute("name");
+    modal.doubleCheck(model.delete, "task", id, listId);
+    //model.delete("task", id, listId);
+  } else if(target.className === "new-list-btn") {
+    const value = target.previousSibling.value;
+    model.add("list", value);
+  } else if(target.parentNode.matches(".list")) {
+    const id = target.parentNode.getAttribute("name");
+    if(parseInt(id) <= 3) return; // default list
+    model.delete("list", id);
   }
 }
