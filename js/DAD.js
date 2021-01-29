@@ -48,6 +48,7 @@ export const DaD = {
       for(; i < xs.length; i++) {
         if(clientX < xs[i]) break;
       }
+      if(!this.originalEl) return;
       const idx = i - 1;
       const id = this.originalEl.getAttribute("name");
       const from = this.originalEl.closest(".list").getAttribute("name");
