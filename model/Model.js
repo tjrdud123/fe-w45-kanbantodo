@@ -5,14 +5,14 @@ import { Observable } from "../js/Observable.js";
 export class Model extends Observable {
   constructor() {
     super();
-    this.preState = {};
     this.state = {};
 
     this.add = this.add.bind(this);
     this.delete = this.delete.bind(this);
+    this.modify = this.modify.bind(this);
     this.filter = this.filter.bind(this);
   }
-  async initState() {
+  async init() {
     const lists = await getData("list");
     const tasks = await getData("task");
     const subTasks = await getData("subTask");
@@ -42,46 +42,44 @@ export class Model extends Observable {
     });
 
     this.notify(this.state);
-
   }
 
   add(type, info) {
-    let state;
     const id = new Date().getTime();
-
-    if (type === "task") {
-      info.id = id;
-      state = produce(this.state, draft => {
+    info.id = id;
+    
+    let newState;
+    if(type === "list") {
+      newState = produce(this.state, draft => {
+        info.tasks = {};
+        draft[id] = info;
+      }); 
+    } else if(type === "task") {
+      newState = produce(this.state, draft => {
         draft[info.listId].tasks[id] = info;
       });
-      postData("task", info);
-    } else if (type === "list") {
-      const data = { id: id, title: info, tasks: {} };
-      state = produce(this.state, draft => {
-        draft[id] = data;
-      });
-      postData("list", data);
     }
 
-    this.state = state;
-    this.notify(state);
+    this.notify(newState);
+    this.state = newState;
+    postData(type, info);
   }
 
   delete(type, id, listId) {
-    let state;
-    if (type === "task") {
-      state = produce(this.state, draft => {
-        delete draft[listId].tasks[id];
-      });
-
-    } else if (type === "list") {
-      state = produce(this.state, draft => {
+    let newState;
+    if(type === "list") {
+      newState = produce(this.state, draft => {
         delete draft[id];
       });
+    } else if(type === "task") {
+      newState = produce(this.state, draft => {
+        delete draft[listId].tasks[id];
+      })
     }
+   
+    this.notify(newState);
+    this.state = newState;
     deleteData(type, id);
-    this.state = state;
-    this.notify(state);
   }
 
   modify(type, info, from, to) {

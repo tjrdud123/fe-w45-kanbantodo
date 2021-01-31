@@ -1,7 +1,3 @@
-/*
-  view에서 발생하는 event handler 함수 정의
-*/
-
 import { Modal } from "./Modal.js";
 
 // modal test
@@ -37,8 +33,7 @@ export function onListEvent({target}, model) {
     modal.doubleCheck(model.delete, "task", id, listId);
     //model.delete("task", id, listId);
   } else if(target.className === "new-list-btn") {
-    const value = target.previousSibling.value;
-    model.add("list", value);
+    model.add("list", { title: target.previousSibling.value });
   } else if(target.parentNode.matches(".list")) {
     const id = target.parentNode.getAttribute("name");
     if(parseInt(id) <= 3) return; // default list

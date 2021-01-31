@@ -13,7 +13,7 @@ function main() {
   
   const model = new Model();
   const listView = new ListView(model, containerEl);
-  model.initState().then(data => {
+  model.init().then(data => {
     DaD.init(model);
   });
 
