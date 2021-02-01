@@ -1,4 +1,4 @@
-import { Observer } from "../js/Observer.js";
+import { Observer } from "../src/Observer.js";
 import { getNewTaskHtml } from "./NewTaskView.js";
 import { getTaskHtml } from "./TaskView.js";
 

@@ -3,11 +3,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: "development",
-  entry: "./entry.js",
+  entry: "./src/js/entry.js",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
   },
+  devtool: 'eval-source-map',
   devServer: {
     host: '127.0.0.1',
     contentBase: path.join(__dirname, "/dist"),
@@ -51,6 +52,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: 'index.html' })
+    new HtmlWebpackPlugin({ template: 'src/index.html' })
   ]
 };

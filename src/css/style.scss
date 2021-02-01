@@ -62,7 +62,13 @@ $btn-height: 40px;
     padding: 10px;
     background-color: #fff;
   }
-  .close-image {
+  .close-image-list {
+    width: 12px;
+    height: 12px;
+    float: right;
+    cursor: pointer;
+  }
+  .close-image-task {
     width: 12px;
     height: 12px;
     float: right;
