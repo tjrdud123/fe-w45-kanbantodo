@@ -21,9 +21,12 @@ export class TaskModel extends Observable {
     this.notify(this.state);
   }
   add({ type, data }) {
+    data.id = new Date().getTime();
     this.state[type].push(data);
 
     this.notify(this.state);
+
+    postData(type, data);
   }
   delete({ type, id }) {
     this.state[type] = this.state[type].filter(item => item.id !== parseInt(id));
