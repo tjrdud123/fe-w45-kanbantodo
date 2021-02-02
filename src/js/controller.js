@@ -2,6 +2,8 @@ import { TaskModel } from "./model/TaskModel.js";
 import { TaskListView } from "./view/TaskListView.js";
 import { TaskView } from "./view/TaskView.js";
 
+import Modal from "./Modal.js";
+
 // model, view 인스턴스 생성, db에서 데이터 받아와서 초기 상태 만들고, view의 event 등록
 export async function initMV(containerEl) {
   // model, view 인스턴스 생성
@@ -35,6 +37,12 @@ function addEventHandler(taskModel) {
   document.addEventListener("add-task", ({ detail }) =>
     onAddItem("task", taskModel, detail)
   );
+  document.addEventListener("EDIT", ({ detail }) => {
+    onEditListTitle(detail);
+  });
+  document.addEventListener("MODIFY_LIST_TITLE", ({ detail }) => {
+    onModifyListTitle(taskModel, detail);
+  });
 }
 
 function onInputFilter(taskModel, value) {
@@ -44,9 +52,19 @@ function onInputFilter(taskModel, value) {
 }
 
 function onDeleteItem(type, taskModel, id) {
-  taskModel.delete({ type: type, id: id });
+  const modal = new Modal();
+  modal.confirm(taskModel.delete, { type: type, id: id });
 }
 
 function onAddItem(type, taskModel, data) {
   taskModel.add({ type: type, data: data });
+}
+
+function onEditListTitle(list) {
+  const modal = new Modal();
+  modal.edit(list);
+}
+
+function onModifyListTitle(taskModel, data) {
+  taskModel.modify("list", data);
 }

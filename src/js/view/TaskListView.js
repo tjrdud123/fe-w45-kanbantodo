@@ -11,6 +11,22 @@ export class TaskListView extends Observer {
     this.rootEl.addEventListener("click", ({ target }) =>
       this.onClickEvent(target)
     );
+    this.rootEl.addEventListener("dblclick", ({ target }) => {
+      if (target.matches(".list")) {
+        this.triggerEvent({
+          type: "EDIT",
+          detail: {
+            title: target.getAttribute("name"),
+            listId: target.id,
+          },
+        });
+      } else if (target.matches(".task")) {
+        this.triggerEvent({
+          type: "DETAIL",
+          detail: {},
+        });
+      }
+    });
   }
   update(state) {
     this.rootEl.innerHTML = state.list.reduce((acc, cur) => {
@@ -22,7 +38,7 @@ export class TaskListView extends Observer {
   }
   template(data) {
     let html =
-      `<div id="${data.id}" class="list margin-10 border-gray">${data.title}` +
+      `<div id="${data.id}" name="${data.title}" class="list margin-10 border-gray">${data.title}` +
       `<img src=${closeImage} class="close-image-list">` +
       `<img src=${plusImage} class="plus-image">` +
       this.newTaskTpl(data.id) +

@@ -29,13 +29,21 @@ export class TaskModel extends Observable {
     postData(type, data);
   }
   delete({ type, id }) {
-    this.state[type] = this.state[type].filter(item => item.id !== parseInt(id));
+    this.state[type] = this.state[type].filter(
+      (item) => item.id !== parseInt(id)
+    );
     this.notify(this.state);
 
     deleteData(type, id);
   }
-  modify({ type, id, data }) {
-
+  modify(type, info) {
+    this.state[type] = this.state[type].map((item) => {
+      if (item.id !== parseInt(info.id)) return item;
+      putData("list", { id: item.id, title: info.value });
+      item.title = info.value;
+      return item;
+    });
+    this.notify(this.state);
   }
   filter(word) {
     if (!word) {
@@ -43,8 +51,8 @@ export class TaskModel extends Observable {
       return;
     }
     const reg = new RegExp(`${word}`);
-    const newState = produce(this.state, draft => {
-      draft.task = draft.task.filter(task => reg.test(task.title));
+    const newState = produce(this.state, (draft) => {
+      draft.task = draft.task.filter((task) => reg.test(task.title));
     });
     this.notify(newState);
   }
