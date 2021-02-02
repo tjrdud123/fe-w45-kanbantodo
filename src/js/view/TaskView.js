@@ -8,9 +8,11 @@ export class TaskView extends Observer {
     this.rootEl = rootEl;
     this.rootEl.addEventListener("click", ({ target }) => {
       if (target.matches(".close-image-task")) {
-        this.triggerEvent({ type: "delete-task", detail: { id: this.getId(target) }} );
+        this.triggerEvent({
+          type: "delete-task",
+          detail: { id: this.getId(target) },
+        });
       }
-      
     });
   }
   update(state) {
@@ -23,9 +25,7 @@ export class TaskView extends Observer {
       }, "");
     });
   }
-  render(state) {
-    // 뷰가 어떻게 생겼고 어떻게 작동하는지에 대한 정보를 지닌 객체를 반환
-  }
+  render(state) {}
   template(data) {
     let html =
       `<div id="${data.id}" class="task border-radius-10 border-gray margin-center">${data.title}` +

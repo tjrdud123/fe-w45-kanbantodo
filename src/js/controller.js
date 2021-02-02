@@ -23,10 +23,18 @@ export async function initMV(containerEl) {
 
 // 뷰 에서 발생하는 커스텀 이벤트 핸들러 등록
 function addEventHandler(taskModel) {
-  document.addEventListener("input-filter", ({ detail }) => onInputFilter(taskModel, detail.value));
-  document.addEventListener("delete-list", ({ detail }) => onDeleteItem("list", taskModel, detail.id));
-  document.addEventListener("delete-task", ({ detail }) => onDeleteItem("task", taskModel, detail.id));
-  document.addEventListener("add-task", ({ detail }) => onAddItem("task", taskModel, detail));
+  document.addEventListener("input-filter", ({ detail }) =>
+    onInputFilter(taskModel, detail.value)
+  );
+  document.addEventListener("delete-list", ({ detail }) =>
+    onDeleteItem("list", taskModel, detail.id)
+  );
+  document.addEventListener("delete-task", ({ detail }) =>
+    onDeleteItem("task", taskModel, detail.id)
+  );
+  document.addEventListener("add-task", ({ detail }) =>
+    onAddItem("task", taskModel, detail)
+  );
 }
 
 function onInputFilter(taskModel, value) {
