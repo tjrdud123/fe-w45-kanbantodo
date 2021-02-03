@@ -1,4 +1,4 @@
-const URL = "http://127.0.0.1:3000"; // 하드 코딩 안하는법 알아보기
+const URL = JSON_SERVER_URL;
 
 export async function getData(type, query) {
   let url = `${URL}/${type}`;
@@ -9,10 +9,10 @@ export async function getData(type, query) {
   try {
     const res = await fetch(url);
     const resData = await res.json();
-    if(res.status !== 200) throw new Error("error");
-    
+    if (res.status !== 200) throw new Error("error");
+
     return resData;
-  } catch(err) {
+  } catch (err) {
     console.error(err);
   }
 }
@@ -21,10 +21,10 @@ export async function deleteData(type, id) {
   let url = `${URL}/${type}/${id}`;
   try {
     const res = await fetch(url, {
-      method: "DELETE"
+      method: "DELETE",
     });
-    if(res.status !== 200) throw new Error("error");
-  } catch(err) {
+    if (res.status !== 200) throw new Error("error");
+  } catch (err) {
     console.error(err);
   }
 }
@@ -33,14 +33,14 @@ export async function postData(type, data) {
   let url = `${URL}/${type}`;
   try {
     const res = await fetch(url, {
-      method: 'post',
+      method: "post",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     });
-    if(res.status !== 201) throw new Error("error");
-  } catch(err) {
+    if (res.status !== 201) throw new Error("error");
+  } catch (err) {
     console.error(err);
   }
 }
@@ -49,15 +49,14 @@ export async function putData(type, data) {
   let url = `${URL}/${type}/${data.id}`;
   try {
     const res = await fetch(url, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     });
-    if(res.status !== 200) throw new Error("error");
-
-  } catch(err) {
+    if (res.status !== 200) throw new Error("error");
+  } catch (err) {
     console.error(err);
   }
 }
