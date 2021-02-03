@@ -9,7 +9,7 @@ export default class SubTaskView extends Observer {
     const taskEls = [...document.querySelectorAll(".task")];
     taskEls.forEach((taskEl) => {
       const filtered = state.subTask.filter(
-        (subTask) => subTask.taskId === parseInt(taskEl.id)
+        (subTask) => parseInt(subTask.taskId) === parseInt(taskEl.id)
       );
       if (filtered) taskEl.innerHTML += this.template(filtered);
     });

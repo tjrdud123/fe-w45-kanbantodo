@@ -7,7 +7,7 @@ async function initPage() {
 
   const inputFilterEl = document.querySelector(".input-filter");
   inputFilterEl.addEventListener("input", ({ target }) => {
-    const evt = new CustomEvent("input-filter", {
+    const evt = new CustomEvent("INPUT_FILTER", {
       detail: { value: target.value },
     });
     document.dispatchEvent(evt);

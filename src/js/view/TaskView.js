@@ -9,7 +9,7 @@ export class TaskView extends Observer {
     this.rootEl.addEventListener("click", ({ target }) => {
       if (target.matches(".close-image-task")) {
         this.triggerEvent({
-          type: "delete-task",
+          type: "DELETE_TASK",
           detail: { id: this.getId(target) },
         });
       }
@@ -33,10 +33,11 @@ export class TaskView extends Observer {
     [...this.rootEl.childNodes].forEach((listEl) => {
       const listId = listEl.id;
       const filtered = state.task.filter((task) => task.listId === listId);
-      listEl.innerHTML += `<div>${filtered.length}개</div>`;
-      listEl.innerHTML += filtered.reduce((acc, cur) => {
+      let html = `<div>${filtered.length}개</div>`;
+      html += filtered.reduce((acc, cur) => {
         return acc + this.template(cur);
       }, "");
+      listEl.innerHTML += html;
     });
   }
   render(state) {}

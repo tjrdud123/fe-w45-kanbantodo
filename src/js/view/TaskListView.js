@@ -56,14 +56,14 @@ export class TaskListView extends Observer {
   onClickEvent(target) {
     if (target.matches(".close-image-list")) {
       this.triggerEvent({
-        type: "delete-list",
+        type: "DELETE_LIST",
         detail: { id: this.getId(target) },
       });
     } else if (target.matches(".plus-image")) {
     } else if (target.matches(".btn-add--active")) {
       const title = target.closest(".new-task").firstElementChild.value;
       this.triggerEvent({
-        type: "add-task",
+        type: "ADD_TASK",
         detail: { listId: target.id, title: title },
       });
     }

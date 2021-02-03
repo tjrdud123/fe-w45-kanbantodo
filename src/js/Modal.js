@@ -19,11 +19,14 @@ const template = {
         <div>
           <textarea class="modal-detail_input">${data.title}</textarea>
         </div>
-        <div>서브 태스크</div>` +
+        <div>서브 태스크</div>
+        <ul class="sub-tasks">` +
       data.subTasks.reduce((acc, cur) => {
         return acc + `<li>${cur}</li>`;
       }, "") +
-      `<input type="text" class="input-sub-task">
+      `</ul>
+      <input type="text" class="input-sub-task margin-zero">
+      <button class="modal-btn-add">+</button>
         <div class="horizontal">
           <button class="modal_btn-confirm">저장</button>
           <button class="modal_btn-cancel">취소</button>
@@ -49,8 +52,10 @@ const template = {
 };
 
 export default class Modal {
-  constructor() {
+  constructor(taskId) {
+    this.taskId = taskId;
     this.root = document.body;
+    this.subTasks = [];
   }
 
   confirm(callback, ...args) {
@@ -81,12 +86,27 @@ export default class Modal {
 
     this.render("edit", list);
   }
-  detail(data) {
+  detail(taskModel, data) {
     document.addEventListener("CONFIRM", () => {
+      this.subTasks.forEach((item) => {
+        taskModel.add({
+          type: "subTask",
+          data: item,
+        });
+      });
       this.el.remove();
     });
     document.addEventListener("CANCEL", () => {
       this.el.remove();
+    });
+    document.addEventListener("ADD", ({ detail }) => {
+      document.querySelector(
+        ".sub-tasks"
+      ).innerHTML += `<li>${detail.title}</li>`;
+      this.subTasks.push({
+        taskId: this.taskId,
+        title: detail.title,
+      });
     });
     this.render("detail", data);
   }
@@ -103,6 +123,14 @@ export default class Modal {
         this.triggerEvent({
           type: "CANCEL",
           detail: {},
+        });
+      } else if (target.matches(".modal-btn-add")) {
+        this.triggerEvent({
+          type: "ADD",
+          detail: {
+            taskId: this.taskId,
+            title: target.previousElementSibling.value,
+          },
         });
       }
     });

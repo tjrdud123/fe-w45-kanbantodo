@@ -14,14 +14,19 @@ export class TaskModel extends Observable {
     this.modify = this.modify.bind(this);
     this.filter = this.filter.bind(this);
   }
-  async initModel() {
-    this.state.list = await getData("list");
-    this.state.task = await getData("task");
-    this.state.subTask = await getData("subTask");
+  initModel() {
+    Promise.all([getData("list"), getData("task"), getData("subTask")]).then(
+      (data) => {
+        this.state.list = data[0];
+        this.state.task = data[1];
+        this.state.subTask = data[2];
 
-    this.notify(this.state);
+        this.notify(this.state);
+      }
+    );
   }
   add({ type, data }) {
+    console.log(type, data);
     data.id = uuidv4();
     this.state[type].push(data);
 

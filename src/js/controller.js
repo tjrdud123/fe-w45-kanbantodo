@@ -26,16 +26,16 @@ export async function initMV(containerEl) {
 
 // 뷰 에서 발생하는 커스텀 이벤트 핸들러 등록
 function addEventHandler(taskModel) {
-  document.addEventListener("input-filter", ({ detail }) =>
+  document.addEventListener("INPUT_FILTER", ({ detail }) =>
     onInputFilter(taskModel, detail.value)
   );
-  document.addEventListener("delete-list", ({ detail }) =>
+  document.addEventListener("DELETE_LIST", ({ detail }) =>
     onDeleteItem("list", taskModel, detail.id)
   );
-  document.addEventListener("delete-task", ({ detail }) =>
+  document.addEventListener("DELETE_TASK", ({ detail }) =>
     onDeleteItem("task", taskModel, detail.id)
   );
-  document.addEventListener("add-task", ({ detail }) =>
+  document.addEventListener("ADD_TASK", ({ detail }) =>
     onAddItem("task", taskModel, detail)
   );
   document.addEventListener("EDIT", ({ detail }) => {
@@ -74,6 +74,6 @@ function onModifyListTitle(taskModel, data) {
 }
 
 function onDetail(taskModel, data) {
-  const modal = new Modal();
-  modal.detail(data);
+  const modal = new Modal(data.id);
+  modal.detail(taskModel, data);
 }
