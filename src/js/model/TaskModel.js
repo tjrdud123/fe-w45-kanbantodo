@@ -2,6 +2,7 @@ import { Observable } from "./Observable.js";
 import { getData, deleteData, postData, putData } from "../REST_API.js";
 
 import produce from "immer";
+import { v4 as uuidv4 } from "uuid";
 
 export class TaskModel extends Observable {
   constructor() {
@@ -21,7 +22,7 @@ export class TaskModel extends Observable {
     this.notify(this.state);
   }
   add({ type, data }) {
-    data.id = new Date().getTime();
+    data.id = uuidv4();
     this.state[type].push(data);
 
     this.notify(this.state);
