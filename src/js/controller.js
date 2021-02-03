@@ -1,6 +1,7 @@
 import { TaskModel } from "./model/TaskModel.js";
 import { TaskListView } from "./view/TaskListView.js";
 import { TaskView } from "./view/TaskView.js";
+import SubTaskView from "./view/SubTaskView.js";
 
 import Modal from "./Modal.js";
 
@@ -10,7 +11,7 @@ export async function initMV(containerEl) {
   const taskModel = new TaskModel();
   const taskListView = new TaskListView(taskModel, containerEl);
   const taskView = new TaskView(taskModel, containerEl);
-
+  const subTaskView = new SubTaskView(taskModel, containerEl);
   // db에서 데이터 가져와서 초기상태 만듬
   await taskModel.initModel();
 
@@ -43,6 +44,9 @@ function addEventHandler(taskModel) {
   document.addEventListener("MODIFY_LIST_TITLE", ({ detail }) => {
     onModifyListTitle(taskModel, detail);
   });
+  document.addEventListener("DETAIL", ({ detail }) => {
+    onDetail(taskModel, detail);
+  });
 }
 
 function onInputFilter(taskModel, value) {
@@ -67,4 +71,9 @@ function onEditListTitle(list) {
 
 function onModifyListTitle(taskModel, data) {
   taskModel.modify("list", data);
+}
+
+function onDetail(taskModel, data) {
+  const modal = new Modal();
+  modal.detail(data);
 }

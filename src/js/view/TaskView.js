@@ -14,6 +14,20 @@ export class TaskView extends Observer {
         });
       }
     });
+    this.rootEl.addEventListener("dblclick", ({ target }) => {
+      if (target.matches(".task")) {
+        this.triggerEvent({
+          type: "DETAIL",
+          detail: {
+            id: target.id,
+            title: target.getAttribute("name"),
+            subTasks: [...target.lastChild.childNodes].map(
+              (item) => item.innerText
+            ),
+          },
+        });
+      }
+    });
   }
   update(state) {
     [...this.rootEl.childNodes].forEach((listEl) => {
@@ -28,7 +42,7 @@ export class TaskView extends Observer {
   render(state) {}
   template(data) {
     let html =
-      `<div id="${data.id}" class="task border-radius-10 border-gray margin-center">${data.title}` +
+      `<div id="${data.id}" name="${data.title}" class="task border-radius-10 border-gray margin-center">${data.title}` +
       `<img id="${data.id}" src=${closeImage} class="close-image-task">` +
       `</div>`;
     return html;

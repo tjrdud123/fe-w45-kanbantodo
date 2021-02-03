@@ -20,11 +20,6 @@ export class TaskListView extends Observer {
             listId: target.id,
           },
         });
-      } else if (target.matches(".task")) {
-        this.triggerEvent({
-          type: "DETAIL",
-          detail: {},
-        });
       }
     });
   }

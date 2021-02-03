@@ -11,7 +11,27 @@ const template = {
       </div>
     </div>`;
   },
-  taskDetail() {},
+  detail(data) {
+    return (
+      `<div class="modal-background">
+      <div class="modal-detail border-gray border-radius-10 box-shadow padding-10">
+        <div class="modal-detail_title">Edit task</div>
+        <div>
+          <textarea class="modal-detail_input">${data.title}</textarea>
+        </div>
+        <div>서브 태스크</div>` +
+      data.subTasks.reduce((acc, cur) => {
+        return acc + `<li>${cur}</li>`;
+      }, "") +
+      `<input type="text" class="input-sub-task">
+        <div class="horizontal">
+          <button class="modal_btn-confirm">저장</button>
+          <button class="modal_btn-cancel">취소</button>
+        </div>
+      <div>
+    </div>`
+    );
+  },
   edit(data) {
     return `<div class="modal-background">
       <div class="modal-edit border-gray border-radius-10 box-shadow padding-10">
@@ -60,6 +80,15 @@ export default class Modal {
     });
 
     this.render("edit", list);
+  }
+  detail(data) {
+    document.addEventListener("CONFIRM", () => {
+      this.el.remove();
+    });
+    document.addEventListener("CANCEL", () => {
+      this.el.remove();
+    });
+    this.render("detail", data);
   }
   render(type, list) {
     const el = document.createElement("div");
