@@ -30,6 +30,9 @@ export class TaskView extends Observer {
     });
   }
   update(state) {
+    state.task.sort((a, b) => {
+      return a.order - b.order;
+    });
     [...this.rootEl.childNodes].forEach((listEl) => {
       const listId = listEl.id;
       const filtered = state.task.filter((task) => task.listId === listId);

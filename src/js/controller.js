@@ -47,6 +47,10 @@ function addEventHandler(taskModel) {
   document.addEventListener("DETAIL", ({ detail }) => {
     onDetail(taskModel, detail);
   });
+  document.addEventListener("PATCH_TASK", ({ detail }) => {
+    const taskEls = detail.taskEls;
+    taskModel.patchTask(taskEls);
+  });
 }
 
 function onInputFilter(taskModel, value) {

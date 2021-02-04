@@ -60,3 +60,19 @@ export async function putData(type, data) {
     console.error(err);
   }
 }
+
+export async function patch(type, data) {
+  let url = `${URL}/${type}/${data.id}`;
+  try {
+    const res = await fetch(url, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (res.status !== 200) throw new Error("error");
+  } catch (err) {
+    console.error(err);
+  }
+}

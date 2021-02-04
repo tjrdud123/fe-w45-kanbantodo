@@ -1,5 +1,5 @@
 import { Observable } from "./Observable.js";
-import { getData, deleteData, postData, putData } from "../REST_API.js";
+import { getData, deleteData, postData, putData, patch } from "../REST_API.js";
 
 import produce from "immer";
 import { v4 as uuidv4 } from "uuid";
@@ -28,6 +28,7 @@ export class TaskModel extends Observable {
   add({ type, data }) {
     console.log(type, data);
     data.id = uuidv4();
+    data.order = -1;
     this.state[type].push(data);
 
     this.notify(this.state);
@@ -36,7 +37,7 @@ export class TaskModel extends Observable {
   }
   delete({ type, id }) {
     this.state[type] = this.state[type].filter(
-      (item) => item.id !== parseInt(id)
+      (item) => parseInt(item.id) !== parseInt(id)
     );
     this.notify(this.state);
 
@@ -61,5 +62,21 @@ export class TaskModel extends Observable {
       draft.task = draft.task.filter((task) => reg.test(task.title));
     });
     this.notify(newState);
+  }
+  patchTask(taskEls) {
+    const tasks = [];
+    taskEls.forEach((taskEl, idx) => {
+      const listId = taskEl.closest(".list").id;
+      const task = {
+        id: taskEl.id,
+        listId: listId,
+        title: taskEl.getAttribute("name"),
+        order: idx,
+      };
+      patch("task", task);
+      tasks.push(task);
+    });
+    this.state.task = tasks;
+    this.notify(this.state);
   }
 }
