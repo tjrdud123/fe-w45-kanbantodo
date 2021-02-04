@@ -28,9 +28,7 @@ export class TaskListView extends Observer {
       return acc + this.template(cur);
     }, "");
   }
-  render(state) {
-    // 뷰가 어떻게 생겼고 어떻게 작동하는지에 대한 정보를 지닌 객체를 반환(가상돔)
-  }
+
   template(data) {
     let html =
       `<div id="${data.id}" name="${data.title}" class="list margin-10 border-gray">${data.title}` +
