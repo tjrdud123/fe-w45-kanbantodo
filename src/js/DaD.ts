@@ -71,6 +71,7 @@ export default class DaD {
   getEl(selector: string, clientX: number, clientY: number): any {
     const items = this.getLocations(selector);
     let ret: Element = this.root;
+    let maxY: number = 0;
     items.forEach((location) => {
       if (location.x1 <= clientX && clientX <= location.x2) {
         if (location.y1 <= clientY && clientY <= location.y2) {
