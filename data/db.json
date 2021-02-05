@@ -18,61 +18,61 @@
       "listId": "3",
       "title": "1-1",
       "id": "9468a6d4-3e7a-4310-a1b9-268ee32e4aee",
+      "order": 7
+    },
+    {
+      "listId": "3",
+      "title": "1-2",
+      "id": "11bedb16-dbbe-46f1-b637-0e63f48e05ff",
       "order": 8
     },
     {
-      "listId": "1",
-      "title": "1-2",
-      "id": "11bedb16-dbbe-46f1-b637-0e63f48e05ff",
-      "order": 1
-    },
-    {
-      "listId": "2",
+      "listId": "3",
       "title": "1-3",
       "id": "8a120157-6058-4b44-90ad-07bd58d1c392",
-      "order": 6
+      "order": 9
     },
     {
-      "listId": "2",
+      "listId": "3",
       "title": "2-1",
       "id": "f5e3347d-82be-4b02-9f05-474156462341",
-      "order": 2
+      "order": 5
     },
     {
-      "listId": "2",
+      "listId": "1",
       "title": "2-2",
       "id": "9b57c626-0273-4221-a963-57f60612941a",
-      "order": 5
+      "order": 0
     },
     {
       "listId": "2",
       "title": "2-3",
       "id": "c9a79361-c432-4f35-bc56-19ac83678a08",
-      "order": 4
-    },
-    {
-      "listId": "3",
-      "title": "3-1",
-      "id": "b8c43ca1-c8e3-4f73-a3f0-b1f1b260e866",
-      "order": 9
+      "order": 2
     },
     {
       "listId": "2",
-      "title": "3-2",
-      "id": "7bdc7bac-adbb-4a58-949f-0b2fda3d48b2",
+      "title": "3-1",
+      "id": "b8c43ca1-c8e3-4f73-a3f0-b1f1b260e866",
       "order": 3
     },
     {
-      "listId": "1",
+      "listId": "3",
+      "title": "3-2",
+      "id": "7bdc7bac-adbb-4a58-949f-0b2fda3d48b2",
+      "order": 6
+    },
+    {
+      "listId": "2",
       "title": "3-3",
       "id": "8ce73d85-5140-4e0b-930a-9cf3cdc3abb8",
-      "order": 0
+      "order": 1
     },
     {
       "listId": "3",
       "title": "asd",
       "id": "003232d0-6615-4682-a55a-26db51ecb7a2",
-      "order": 7
+      "order": 4
     }
   ],
   "subTask": [
